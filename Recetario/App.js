@@ -9,104 +9,50 @@
 import React from 'react';
 import type {Node} from 'react';
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
   Text,
-  useColorScheme,
+  TextInput,
   View,
+  SafeAreaView,
+  StyleSheet,
+  Image,
+  Pressable,
+  ScrollView,
 } from 'react-native';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
+// import Search from './assets/img/search.svg';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
+const SearchBar = () => {
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
+    <ScrollView>
+      <View style={styles.body}>
+        <TextInput
+          placeholder="What do you want to eat?"
+          placeholderTextColor="#fff"
+          style={styles.input}
+        />
+      </View>
+      <Image
+        style={styles.image}
+        source={require('./assets/img/microphone.png')}
+      />
+    </ScrollView>
   );
 };
-
-const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Jesus Edit <Text style={styles.highlight}>App.js</Text> to change
-            this screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-};
-
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    paddingLeft: 8,
+    backgroundColor: '#ACACB0',
+    borderRadius: 15,
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  body: {
+    backgroundColor: '#fff',
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
+  image: {
+    width: 30,
+    height: 30,
   },
 });
-
-export default App;
+export default SearchBar;
